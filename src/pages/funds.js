@@ -3,8 +3,8 @@ import { useQuery, gql } from '@apollo/client';
 import FundCard from '../containers/fund-card';
 import { Layout, QueryResult } from '../components';
 
-/** TRACKS gql query to retreive all funds */
-export const TRACKS = gql`
+/** FUNDS gql query to retreive all funds */
+export const FUNDS = gql`
   query getFunds {
     fundsForHome {
       id
@@ -22,10 +22,10 @@ export const TRACKS = gql`
 
 /**
  * Funds Page is the Catstronauts home page.
- * We display a grid of funds fetched with useQuery with the TRACKS query
+ * We display a grid of funds fetched with useQuery with the FUNDS query
  */
 const Funds = () => {
-  const { loading, error, data } = useQuery(TRACKS);
+  const { loading, error, data } = useQuery(FUNDS);
 
   return (
     <Layout grid>

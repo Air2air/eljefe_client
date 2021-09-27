@@ -3,7 +3,7 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { InMemoryCache } from '@apollo/client';
 import { renderApollo, cleanup, waitForElement } from '../../utils/test-utils';
-import Funds, { TRACKS } from '../funds';
+import Funds, { FUNDS } from '../funds';
 
 const mockFund = {
   id: 'c_0',
@@ -26,7 +26,7 @@ describe('Funds Page', () => {
   it('renders funds', async () => {
     const mocks = [
       {
-        request: { query: TRACKS },
+        request: { query: FUNDS },
         result: {
           data: {
             fundsForHome: [mockFund],
@@ -49,7 +49,7 @@ import React from 'react';
 import { renderApollo, cleanup, waitForElement } from '../../test-utils';
 import { InMemoryCache } from '@apollo/client';
 
-import Funds, { TRACKS } from '../funds';
+import Funds, { FUNDS } from '../funds';
 const mockFund = {
   id: 'c_0',
   title: 'Nap, the hard way',
@@ -69,7 +69,7 @@ describe('Funds Page', () => {
     const cache = new InMemoryCache({ addTypename: false });
     const mocks = [
       {
-        request: { query: TRACKS },
+        request: { query: FUNDS },
         result: {
           data: {
             funds: [mockFund],

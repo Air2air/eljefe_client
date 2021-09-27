@@ -1,15 +1,15 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Layout, QueryResult } from '../components';
-import TrackDetail from '../components/track-detail';
+import FundDetail from '../components/fund-detail';
 
-/** GET_TRACK gql query to retrieve a specific track by its ID */
+/** GET_TRACK gql query to retrieve a specific fund by its ID */
 export const GET_TRACK = gql`
-  query getTrack($trackId: ID!) {
-    track(id: $trackId) {
+  query getFund($fundId: ID!) {
+    fund(id: $fundId) {
       id
       title
-      author {
+      manager {
         id
         name
         photo
@@ -29,21 +29,21 @@ export const GET_TRACK = gql`
 `;
 
 /**
- * Track Page fetches a track's data from the gql query GET_TRACK
- * and provides it to the TrackDetail component to display
+ * Fund Page fetches a fund's data from the gql query GET_TRACK
+ * and provides it to the FundDetail component to display
  */
-const Track = ({ trackId }) => {
+const Fund = ({ fundId }) => {
   const { loading, error, data } = useQuery(GET_TRACK, {
-    variables: { trackId },
+    variables: { fundId },
   });
 
   return (
     <Layout>
       <QueryResult error={error} loading={loading} data={data}>
-        <TrackDetail track={data?.track} />
+        <FundDetail fund={data?.fund} />
       </QueryResult>
     </Layout>
   );
 };
 
-export default Track;
+export default Fund;

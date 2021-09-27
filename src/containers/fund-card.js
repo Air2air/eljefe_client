@@ -5,14 +5,14 @@ import { humanReadableTimeFromSeconds } from '../utils/helpers';
 import { Link } from '@reach/router';
 
 /**
- * Track Card component renders basic info in a card format
- * for each track populating the tracks grid homepage.
+ * Fund Card component renders basic info in a card format
+ * for each fund populating the funds grid homepage.
  */
-const TrackCard = ({ track }) => {
-  const { title, thumbnail, author, length, symbolsCount, id } = track;
+const FundCard = ({ fund }) => {
+  const { title, thumbnail, manager, length, symbolsCount, id } = fund;
 
   return (
-    <CardContainer to={`/track/${id}`}>
+    <CardContainer to={`/fund/${id}`}>
       <CardContent>
         <CardImageContainer>
           <CardImage src={thumbnail} alt={title} />
@@ -20,13 +20,13 @@ const TrackCard = ({ track }) => {
         <CardBody>
           <CardTitle>{title || ''}</CardTitle>
           <CardFooter>
-            <AuthorImage src={author.photo} />
-            <AuthorAndTrack>
-              <AuthorName>{author.name}</AuthorName>
-              <TrackLength>
+            <ManagerImage src={manager.photo} />
+            <ManagerAndFund>
+              <ManagerName>{manager.name}</ManagerName>
+              <FundLength>
                 {symbolsCount} symbols - {humanReadableTimeFromSeconds(length)}
-              </TrackLength>
-            </AuthorAndTrack>
+              </FundLength>
+            </ManagerAndFund>
           </CardFooter>
         </CardBody>
       </CardContent>
@@ -34,9 +34,9 @@ const TrackCard = ({ track }) => {
   );
 };
 
-export default TrackCard;
+export default FundCard;
 
-/** Track Card styled components */
+/** Fund Card styled components */
 const CardContainer = styled(Link)({
   borderRadius: 6,
   color: colors.text,
@@ -118,7 +118,7 @@ const CardFooter = styled.div({
   flexDirection: 'Row',
 });
 
-const AuthorImage = styled.img({
+const ManagerImage = styled.img({
   height: 30,
   width: 30,
   marginRight: 8,
@@ -126,17 +126,17 @@ const AuthorImage = styled.img({
   objectFit: 'cover',
 });
 
-const AuthorAndTrack = styled.div({
+const ManagerAndFund = styled.div({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
 });
 
-const AuthorName = styled.div({
+const ManagerName = styled.div({
   lineHeight: '1em',
   fontSize: '1.1em',
 });
 
-const TrackLength = styled.div({
+const FundLength = styled.div({
   fontSize: '0.8em',
 });

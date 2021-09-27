@@ -6,18 +6,18 @@ import { humanReadableTimeFromSeconds } from '../utils/helpers';
 
 /**
  * Symbol Navigation: displays a list of symbols titles
- * from a track and navigates to the symbols page
+ * from a fund and navigates to the symbols page
  */
-const SymbolsNav = ({ symbol, track }) => {
+const SymbolsNav = ({ symbol, fund }) => {
   return (
     <SymbolsNavContainer>
       <SymbolTitle>
         <h4>
-          <Link to="../..">{track.title}</Link>
+          <Link to="../..">{fund.title}</Link>
         </h4>
       </SymbolTitle>
       <SymbolsList>
-        {track.symbols.map((navSymbol) => (
+        {fund.symbols.map((navSymbol) => (
           <SymbolListItem key={`symbol_${navSymbol.id}`}>
             <div>
               <SymbolNavStyledLink to={`../${navSymbol.id}`}>
@@ -52,14 +52,14 @@ const SymbolsNavContainer = styled.div({
   overflow: 'auto',
 });
 
-const trackTitleHeight = 70;
+const fundTitleHeight = 70;
 
 const SymbolTitle = styled.div({
   display: 'flex',
   position: 'sticky',
   fontSize: '1.6em',
   fontWeight: '400',
-  height: trackTitleHeight,
+  height: fundTitleHeight,
   alignItems: 'center',
   justifyContent: 'center',
   textAlign: 'center',
@@ -80,7 +80,7 @@ const SymbolsList = styled.ul({
   margin: 0,
   padding: 0,
   overflowY: 'scroll',
-  height: `calc(100% - ${trackTitleHeight}px)`,
+  height: `calc(100% - ${fundTitleHeight}px)`,
 });
 
 const SymbolListItem = styled.li((props) => ({

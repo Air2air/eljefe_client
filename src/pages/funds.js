@@ -1,18 +1,18 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
-import TrackCard from '../containers/track-card';
+import FundCard from '../containers/fund-card';
 import { Layout, QueryResult } from '../components';
 
-/** TRACKS gql query to retreive all tracks */
+/** TRACKS gql query to retreive all funds */
 export const TRACKS = gql`
-  query getTracks {
-    tracksForHome {
+  query getFunds {
+    fundsForHome {
       id
       title
       thumbnail
       length
       symbolsCount
-      author {
+      manager {
         name
         photo
       }
@@ -21,21 +21,21 @@ export const TRACKS = gql`
 `;
 
 /**
- * Tracks Page is the Catstronauts home page.
- * We display a grid of tracks fetched with useQuery with the TRACKS query
+ * Funds Page is the Catstronauts home page.
+ * We display a grid of funds fetched with useQuery with the TRACKS query
  */
-const Tracks = () => {
+const Funds = () => {
   const { loading, error, data } = useQuery(TRACKS);
 
   return (
     <Layout grid>
       <QueryResult error={error} loading={loading} data={data}>
-        {data?.tracksForHome?.map((track, index) => (
-          <TrackCard key={track.id} track={track} />
+        {data?.fundsForHome?.map((fund, index) => (
+          <FundCard key={fund.id} fund={fund} />
         ))}
       </QueryResult>
     </Layout>
   );
 };
 
-export default Tracks;
+export default Funds;

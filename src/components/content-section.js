@@ -4,7 +4,7 @@ import { widths, colors } from '../styles';
 
 /**
  * Content Section component renders content (mainly text/mdown based)
- * for track and symbol details
+ * for fund and symbol details
  */
 const ContentSection = ({ children }) => {
   return <ContentDiv>{children}</ContentDiv>;

@@ -14,32 +14,32 @@ import ContentSection from './content-section';
 import MarkDown from './md-content';
 
 /**
- * Track Detail component renders the main content of a given track:
- * author, length, number of views, symbols list, among other things.
- * It provides access to the first symbol of the track.
+ * Fund Detail component renders the main content of a given fund:
+ * manager, length, number of views, symbols list, among other things.
+ * It provides access to the first symbol of the fund.
  */
-const TrackDetail = ({ track }) => {
+const FundDetail = ({ fund }) => {
   const {
     title,
     description,
     thumbnail,
-    author,
+    manager,
     length,
     symbolsCount,
     symbols,
     numberOfViews,
-  } = track;
+  } = fund;
 
   return (
     <ContentSection>
       <CoverImage src={thumbnail} alt="" />
-      <TrackDetails>
+      <FundDetails>
         <DetailRow>
           <h1>{title}</h1>
         </DetailRow>
         <DetailRow>
           <DetailItem>
-            <h4>Track details</h4>
+            <h4>Fund details</h4>
             <IconAndLabel>
               <IconView width="16px" />
               <div id="viewCount">{numberOfViews} view(s)</div>
@@ -54,9 +54,9 @@ const TrackDetail = ({ track }) => {
             </IconAndLabel>
           </DetailItem>
           <DetailItem>
-            <h4>Author</h4>
-            <AuthorImage src={author.photo} />
-            <AuthorName>{author.name}</AuthorName>
+            <h4>Manager</h4>
+            <ManagerImage src={manager.photo} />
+            <ManagerName>{manager.name}</ManagerName>
           </DetailItem>
           <div>
             <StyledLink to={`./symbol/${symbols[0]['id']}`}>
@@ -65,7 +65,7 @@ const TrackDetail = ({ track }) => {
                 color={colors.pink.base}
                 size="large"
               >
-                Start Track
+                Start Fund
               </Button>
             </StyledLink>
           </div>
@@ -85,15 +85,15 @@ const TrackDetail = ({ track }) => {
             </ul>
           </DetailItem>
         </SymbolListContainer>
-      </TrackDetails>
+      </FundDetails>
       <MarkDown content={description} />
     </ContentSection>
   );
 };
 
-export default TrackDetail;
+export default FundDetail;
 
-/** Track detail styled components */
+/** Fund detail styled components */
 const CoverImage = styled.img({
   objectFit: 'cover',
   maxHeight: 400,
@@ -106,7 +106,7 @@ const StyledLink = styled(Link)({
   color: 'white',
 });
 
-const TrackDetails = styled.div({
+const FundDetails = styled.div({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -147,7 +147,7 @@ const DetailItem = styled.div({
   alignSelf: 'center',
 });
 
-const AuthorImage = styled.img({
+const ManagerImage = styled.img({
   height: 30,
   width: 30,
   marginBottom: 8,
@@ -155,7 +155,7 @@ const AuthorImage = styled.img({
   objectFit: 'cover',
 });
 
-const AuthorName = styled.div({
+const ManagerName = styled.div({
   lineHeight: '1em',
   fontSize: '1em',
 });

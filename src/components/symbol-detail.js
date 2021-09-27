@@ -11,7 +11,7 @@ import MarkDown from './md-content';
  * Symbol Detail renders content of a given symbol:
  * Video player, symbols navigation and markdown content
  */
-const SymbolDetail = ({ track, symbol }) => {
+const SymbolDetail = ({ fund, symbol }) => {
   const { videoUrl, title, content } = symbol;
   const { width } = useWindowDimensions();
 
@@ -22,7 +22,7 @@ const SymbolDetail = ({ track, symbol }) => {
           <PlayerContainer>
             <ReactPlayer url={videoUrl} width="100%" height="100%" />
           </PlayerContainer>
-          <SymbolsNav track={track} symbol={symbol}></SymbolsNav>
+          <SymbolsNav fund={fund} symbol={symbol}></SymbolsNav>
         </TopContainer>
       </TopSection>
       <ContentSection>

@@ -1,16 +1,16 @@
 import React, { Fragment } from 'react';
 import { Router } from '@reach/router';
 /** importing our pages */
-import Tracks from './tracks';
-import Track from './track';
+import Funds from './funds';
+import Fund from './fund';
 import Symbol from './symbol';
 
 export default function Pages() {
   return (
     <Router primary={false} component={Fragment}>
-      <Tracks path="/" />
-      <Track path="/track/:trackId" />
-      <Symbol path="/track/:trackId/symbol/:symbolId" />
+      <Funds path="/" />
+      <Fund path="/fund/:fundId" />
+      <Symbol path="/fund/:fundId/symbol/:symbolId" />
     </Router>
   );
 }

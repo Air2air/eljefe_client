@@ -16,9 +16,9 @@ export const GET_TRACK = gql`
       }
       thumbnail
       length
-      modulesCount
+      symbolsCount
       numberOfViews
-      modules {
+      symbols {
         id
         title
         length

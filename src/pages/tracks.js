@@ -11,7 +11,7 @@ export const TRACKS = gql`
       title
       thumbnail
       length
-      modulesCount
+      symbolsCount
       author {
         name
         photo

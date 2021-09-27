@@ -15,8 +15,8 @@ import MarkDown from './md-content';
 
 /**
  * Track Detail component renders the main content of a given track:
- * author, length, number of views, modules list, among other things.
- * It provides access to the first module of the track.
+ * author, length, number of views, symbols list, among other things.
+ * It provides access to the first symbol of the track.
  */
 const TrackDetail = ({ track }) => {
   const {
@@ -25,8 +25,8 @@ const TrackDetail = ({ track }) => {
     thumbnail,
     author,
     length,
-    modulesCount,
-    modules,
+    symbolsCount,
+    symbols,
     numberOfViews,
   } = track;
 
@@ -46,7 +46,7 @@ const TrackDetail = ({ track }) => {
             </IconAndLabel>
             <IconAndLabel>
               <IconBook width="14px" height="14px" />
-              <div>{modulesCount} modules</div>
+              <div>{symbolsCount} symbols</div>
             </IconAndLabel>
             <IconAndLabel>
               <IconTime width="14px" />
@@ -59,7 +59,7 @@ const TrackDetail = ({ track }) => {
             <AuthorName>{author.name}</AuthorName>
           </DetailItem>
           <div>
-            <StyledLink to={`./module/${modules[0]['id']}`}>
+            <StyledLink to={`./symbol/${symbols[0]['id']}`}>
               <Button
                 icon={<IconRun width="20px" />}
                 color={colors.pink.base}
@@ -70,21 +70,21 @@ const TrackDetail = ({ track }) => {
             </StyledLink>
           </div>
         </DetailRow>
-        <ModuleListContainer>
+        <SymbolListContainer>
           <DetailItem>
-            <h4>Modules</h4>
+            <h4>Symbols</h4>
             <ul>
-              {modules.map((module) => (
-                <li key={module.title}>
-                  <div>{module.title}</div>
-                  <ModuleLength>
-                    {humanReadableTimeFromSeconds(module.length)}
-                  </ModuleLength>
+              {symbols.map((symbol) => (
+                <li key={symbol.title}>
+                  <div>{symbol.title}</div>
+                  <SymbolLength>
+                    {humanReadableTimeFromSeconds(symbol.length)}
+                  </SymbolLength>
                 </li>
               ))}
             </ul>
           </DetailItem>
-        </ModuleListContainer>
+        </SymbolListContainer>
       </TrackDetails>
       <MarkDown content={description} />
     </ContentSection>
@@ -177,7 +177,7 @@ const IconAndLabel = styled.div({
   },
 });
 
-const ModuleListContainer = styled.div({
+const SymbolListContainer = styled.div({
   width: '100%',
   ul: {
     listStyle: 'none',
@@ -193,7 +193,7 @@ const ModuleListContainer = styled.div({
   },
 });
 
-const ModuleLength = styled.div({
+const SymbolLength = styled.div({
   marginLeft: 30,
   color: colors.grey.light,
 });

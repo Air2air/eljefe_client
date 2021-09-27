@@ -3,14 +3,14 @@ import { Router } from '@reach/router';
 /** importing our pages */
 import Tracks from './tracks';
 import Track from './track';
-import Module from './module';
+import Symbol from './symbol';
 
 export default function Pages() {
   return (
     <Router primary={false} component={Fragment}>
       <Tracks path="/" />
       <Track path="/track/:trackId" />
-      <Module path="/track/:trackId/module/:moduleId" />
+      <Symbol path="/track/:trackId/symbol/:symbolId" />
     </Router>
   );
 }

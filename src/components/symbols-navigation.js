@@ -5,44 +5,44 @@ import { colors, IconArrowRight, IconDoubleArrowRight } from '../styles';
 import { humanReadableTimeFromSeconds } from '../utils/helpers';
 
 /**
- * Module Navigation: displays a list of modules titles
- * from a track and navigates to the modules page
+ * Symbol Navigation: displays a list of symbols titles
+ * from a track and navigates to the symbols page
  */
-const ModulesNav = ({ module, track }) => {
+const SymbolsNav = ({ symbol, track }) => {
   return (
-    <ModulesNavContainer>
-      <ModuleTitle>
+    <SymbolsNavContainer>
+      <SymbolTitle>
         <h4>
           <Link to="../..">{track.title}</Link>
         </h4>
-      </ModuleTitle>
-      <ModulesList>
-        {track.modules.map((navModule) => (
-          <ModuleListItem key={`module_${navModule.id}`}>
+      </SymbolTitle>
+      <SymbolsList>
+        {track.symbols.map((navSymbol) => (
+          <SymbolListItem key={`symbol_${navSymbol.id}`}>
             <div>
-              <ModuleNavStyledLink to={`../${navModule.id}`}>
-                <ModuleListItemContent isActive={navModule.id === module.id}>
-                  {navModule.id === module.id ? (
+              <SymbolNavStyledLink to={`../${navSymbol.id}`}>
+                <SymbolListItemContent isActive={navSymbol.id === symbol.id}>
+                  {navSymbol.id === symbol.id ? (
                     <IconDoubleArrowRight width="14px" />
                   ) : (
                     <IconArrowRight width="14px" weight="thin" />
                   )}
-                  <div>{navModule.title}</div>
-                  <div>{humanReadableTimeFromSeconds(navModule.length)}</div>
-                </ModuleListItemContent>
-              </ModuleNavStyledLink>
+                  <div>{navSymbol.title}</div>
+                  <div>{humanReadableTimeFromSeconds(navSymbol.length)}</div>
+                </SymbolListItemContent>
+              </SymbolNavStyledLink>
             </div>
-          </ModuleListItem>
+          </SymbolListItem>
         ))}
-      </ModulesList>
-    </ModulesNavContainer>
+      </SymbolsList>
+    </SymbolsNavContainer>
   );
 };
 
-export default ModulesNav;
+export default SymbolsNav;
 
-/** Module Navigation styled components */
-const ModulesNavContainer = styled.div({
+/** Symbol Navigation styled components */
+const SymbolsNavContainer = styled.div({
   width: '33%',
   position: 'relative',
   marginLeft: 20,
@@ -54,7 +54,7 @@ const ModulesNavContainer = styled.div({
 
 const trackTitleHeight = 70;
 
-const ModuleTitle = styled.div({
+const SymbolTitle = styled.div({
   display: 'flex',
   position: 'sticky',
   fontSize: '1.6em',
@@ -75,7 +75,7 @@ const ModuleTitle = styled.div({
   },
 });
 
-const ModulesList = styled.ul({
+const SymbolsList = styled.ul({
   listStyle: 'none',
   margin: 0,
   padding: 0,
@@ -83,20 +83,20 @@ const ModulesList = styled.ul({
   height: `calc(100% - ${trackTitleHeight}px)`,
 });
 
-const ModuleListItem = styled.li((props) => ({
+const SymbolListItem = styled.li((props) => ({
   borderBottom: `solid 1px ${colors.grey.darker}`,
   ':last-child': {
     borderBottom: 'none',
   },
 }));
 
-const ModuleNavStyledLink = styled(Link)({
+const SymbolNavStyledLink = styled(Link)({
   textDecoration: 'none',
   display: 'flex',
   alignItems: 'center',
 });
 
-const ModuleListItemContent = styled.div((props) => ({
+const SymbolListItemContent = styled.div((props) => ({
   backgroundColor: props.isActive ? colors.black.base : colors.black.light,
   color: props.isActive ? colors.silver.lighter : colors.silver.darker,
   minHeight: 80,

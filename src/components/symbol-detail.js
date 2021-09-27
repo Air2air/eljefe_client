@@ -4,15 +4,15 @@ import { colors, widths } from '../styles';
 import useWindowDimensions from '../utils/useWindowDimensions';
 import ContentSection from './content-section';
 import ReactPlayer from 'react-player/youtube';
-import ModulesNav from './modules-navigation';
+import SymbolsNav from './symbols-navigation';
 import MarkDown from './md-content';
 
 /**
- * Module Detail renders content of a given module:
- * Video player, modules navigation and markdown content
+ * Symbol Detail renders content of a given symbol:
+ * Video player, symbols navigation and markdown content
  */
-const ModuleDetail = ({ track, module }) => {
-  const { videoUrl, title, content } = module;
+const SymbolDetail = ({ track, symbol }) => {
+  const { videoUrl, title, content } = symbol;
   const { width } = useWindowDimensions();
 
   return (
@@ -22,20 +22,20 @@ const ModuleDetail = ({ track, module }) => {
           <PlayerContainer>
             <ReactPlayer url={videoUrl} width="100%" height="100%" />
           </PlayerContainer>
-          <ModulesNav track={track} module={module}></ModulesNav>
+          <SymbolsNav track={track} symbol={symbol}></SymbolsNav>
         </TopContainer>
       </TopSection>
       <ContentSection>
-        <ModuleTitle>{title}</ModuleTitle>
+        <SymbolTitle>{title}</SymbolTitle>
         <MarkDown content={content} />
       </ContentSection>
     </>
   );
 };
 
-export default ModuleDetail;
+export default SymbolDetail;
 
-/** Module Detail styled components */
+/** Symbol Detail styled components */
 const TopSection = styled.div({
   display: 'flex',
   justifyContent: 'center',
@@ -59,7 +59,7 @@ const PlayerContainer = styled.div({
   width: '66%',
 });
 
-const ModuleTitle = styled.h1({
+const SymbolTitle = styled.h1({
   marginTop: 10,
   marginBottom: 30,
   paddingBottom: 10,

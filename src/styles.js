@@ -32,7 +32,7 @@ const GlobalStyles = () => (
       body: {
         margin: 0,
         padding: 0,
-        fontFamily: "'Source Sans Pro', sans-serif",
+        fontFamily: "'Rubik', sans-serif",
         backgroundColor: colors.background,
         color: colors.text,
       },

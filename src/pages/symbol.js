@@ -1,6 +1,6 @@
-import React from 'react';
-import { useQuery, gql } from '@apollo/client';
-import { Layout, SymbolDetail, QueryResult } from '../components';
+import React from "react";
+import { useQuery, gql } from "@apollo/client";
+import { Layout, SymbolDetail, QueryResult } from "../components";
 
 /**
  * GET_SYMBOL_AND_PARENT_FUND gql query to retrieve a specific symbol and its parent fund,
@@ -11,17 +11,21 @@ export const GET_SYMBOL_AND_PARENT_FUND = gql`
     symbol(id: $symbolId) {
       id
       title
-      content
-      videoUrl
     }
     fund(id: $fundId) {
       id
       title
-      symbols {
-        id
-        title
-        length
-      }
+      description
+      # manager {
+      #   id
+      #   title
+      #   description
+      # }
+      # symbols {
+      #   id
+      #   title
+      #   description
+      # }
     }
   }
 `;

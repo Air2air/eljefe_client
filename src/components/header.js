@@ -8,6 +8,7 @@ import logo from '../assets/space_cat_logo.png';
  * Header renders the top navigation
  * for this particular tutorial level, it only holds the home button
  */
+
 const Header = ({ children }) => {
   return (
     <HeaderBar>

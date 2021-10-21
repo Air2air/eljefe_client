@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors, mq } from '../styles';
-import { humanReadableTimeFromSeconds } from '../utils/helpers';
+//import { humanReadableTimeFromSeconds } from '../utils/helpers';
 import { Link } from '@reach/router';
 
 /**
@@ -9,22 +9,21 @@ import { Link } from '@reach/router';
  * for each fund populating the funds grid homepage.
  */
 const FundCard = ({ fund }) => {
-  const { title, thumbnail, manager, length, symbolsCount, id } = fund;
+  const { title, description, manager, id } = fund;
 
   return (
     <CardContainer to={`/fund/${id}`}>
       <CardContent>
-        <CardImageContainer>
-          <CardImage src={thumbnail} alt={title} />
+        <CardImageContainer>{title}
         </CardImageContainer>
         <CardBody>
           <CardTitle>{title || ''}</CardTitle>
           <CardFooter>
-            <ManagerImage src={manager.photo} />
             <ManagerAndFund>
-              <ManagerName>{manager.name}</ManagerName>
+              {/* <ManagerName>{manager.title}, {manager.description}, </ManagerName> */}
+              <ManagerName>{title}, {description}, </ManagerName>
               <FundLength>
-                {symbolsCount} symbols - {humanReadableTimeFromSeconds(length)}
+              {description}
               </FundLength>
             </ManagerAndFund>
           </CardFooter>
@@ -97,13 +96,6 @@ const CardImageContainer = styled.div({
   },
 });
 
-const CardImage = styled.img({
-  objectFit: 'cover',
-  width: '100%',
-  height: '100%',
-  filter: 'grayscale(60%)',
-});
-
 const CardBody = styled.div({
   padding: 18,
   flex: 1,
@@ -118,13 +110,7 @@ const CardFooter = styled.div({
   flexDirection: 'Row',
 });
 
-const ManagerImage = styled.img({
-  height: 30,
-  width: 30,
-  marginRight: 8,
-  borderRadius: '50%',
-  objectFit: 'cover',
-});
+
 
 const ManagerAndFund = styled.div({
   display: 'flex',

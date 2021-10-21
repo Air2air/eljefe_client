@@ -56,7 +56,7 @@ const FundDetail = ({ fund }) => {
           <DetailItem>
             <h4>Manager</h4>
             <ManagerImage src={manager.photo} />
-            <ManagerName>{manager.name}</ManagerName>
+            <ManagerName>{manager.title}</ManagerName>
           </DetailItem>
           <div>
             <StyledLink to={`./symbol/${symbols[0]['id']}`}>

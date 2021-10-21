@@ -1,7 +1,7 @@
-import React from 'react';
-import { useQuery, gql } from '@apollo/client';
-import { Layout, QueryResult } from '../components';
-import FundDetail from '../components/fund-detail';
+import React from "react";
+import { useQuery, gql } from "@apollo/client";
+import { Layout, QueryResult } from "../components";
+import FundDetail from "../components/fund-detail";
 
 /** GET_FUND gql query to retrieve a specific fund by its ID */
 export const GET_FUND = gql`
@@ -9,21 +9,16 @@ export const GET_FUND = gql`
     fund(id: $fundId) {
       id
       title
+      description
       manager {
         id
-        name
-        photo
+        title
       }
-      thumbnail
-      length
-      symbolsCount
-      numberOfViews
       symbols {
         id
         title
-        length
+        description
       }
-      description
     }
   }
 `;
